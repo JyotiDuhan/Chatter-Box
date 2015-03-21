@@ -4,8 +4,12 @@
 	function get_msg($con){
 		$sql = "select * from chats";
 		$result = mysqli_query($con,$sql);
-		$data = mysqli_fetch_assoc($result);
-		$info = array('Name'=>$data['Name'] , 'msg'=>$data['msg']);
+		$info = array();
+		while($message = mysqli_fetch_assoc($result)){
+			$info[] = array('Name'=>$message['Name'] , 'msg'=>$message['msg']);
+		}
+		// $data = mysqli_fetch_assoc($result);
+		// $info[] = array('Name'=>$data['Name'] , 'msg'=>$data['msg']);
 		return $info;
 	}
 	

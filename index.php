@@ -18,9 +18,11 @@ if(isset($_POST['send'])){
 <body>
 	<div id='msg'>
 	<?php
-		$message = get_msg($con);
+		$info = get_msg($con);
+		foreach ($info as $message) {
 			echo $message['Name'].'Sent<br />';
-			echo $message['msg'];
+			echo $message['msg'].'<br /><br />';
+		}
 	?>
 	</div>
 	<form action="index.php" method ="POST">
